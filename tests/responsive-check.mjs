@@ -1,6 +1,5 @@
 import { spawn, spawnSync } from "node:child_process";
 import { existsSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
-import { createServer } from "node:http";
 
 const widths = [320,375,414,768,1024,1280,1536];
 const screenshotDir = "screenshots";
