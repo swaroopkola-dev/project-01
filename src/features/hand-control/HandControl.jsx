@@ -129,6 +129,8 @@ export function HandControl({ cursorRef, onStatusChange }) {
     };
   }, [enabled]);
 
+  // The cleanup helpers are component-local DOM utilities; keep this effect one-shot.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => () => {
     activeRef.current = false;
     sessionRef.current += 1;
@@ -180,9 +182,6 @@ export function HandControl({ cursorRef, onStatusChange }) {
     const tip = hand[8];
     const targetX = 1 - tip.x;
     const targetY = tip.y;
-    const dx = targetX - smoothRef.current.x;
-    const dy = targetY - smoothRef.current.y;
-
     // Edge-assist: the final 10% of the camera range expands toward the
     // corresponding viewport edge, making corners easier to reach without
     // changing the center-area tracking feel.
