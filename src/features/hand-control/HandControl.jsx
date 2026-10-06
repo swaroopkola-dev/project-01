@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { classifyGesture } from "./gesture";
 import { getInteractiveTarget } from "./targets";
 
@@ -31,7 +31,7 @@ export function HandControl({ cursorRef, onStatusChange }) {
     onStatusChange?.(value);
   };
 
-  const setCursorVisible = (visible) => {
+  const setCursorVisible = useCallback((visible) => {
     if (cursorRef?.current) cursorRef.current.dataset.visible = String(visible);
   };
 
@@ -129,8 +129,6 @@ export function HandControl({ cursorRef, onStatusChange }) {
     };
   }, [enabled]);
 
-  // The cleanup helpers are component-local DOM utilities; keep this effect one-shot.
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => () => {
     activeRef.current = false;
     sessionRef.current += 1;
