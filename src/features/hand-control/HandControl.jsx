@@ -139,7 +139,7 @@ export function HandControl({ cursorRef, onStatusChange }) {
     cancelClick();
     clearHover();
     setCursorVisible(false);
-  }, []);
+  }, [setCursorVisible]);
 
   const detectFrame = () => {
     const video = videoRef.current;
