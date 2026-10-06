@@ -33,7 +33,7 @@ export function HandControl({ cursorRef, onStatusChange }) {
 
   const setCursorVisible = useCallback((visible) => {
     if (cursorRef?.current) cursorRef.current.dataset.visible = String(visible);
-  };
+  }, [cursorRef]);
 
   const setCursor = (x, y, mode) => {
     const node = cursorRef?.current;
