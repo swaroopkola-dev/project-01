@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { classifyGesture } from "./gesture";
 import { getInteractiveTarget } from "./targets";
 
-export function HandControl({ cursorRef, onTrackingChange, onStatusChange }) {
+export function HandControl({ cursorRef, onStatusChange }) {
   const videoRef = useRef(null);
   const detectorRef = useRef(null);
   const streamRef = useRef(null);
@@ -31,9 +31,9 @@ export function HandControl({ cursorRef, onTrackingChange, onStatusChange }) {
     onStatusChange?.(value);
   };
 
-  const setCursorVisible = (visible) => {
+  const setCursorVisible = useCallback((visible) => {
     if (cursorRef?.current) cursorRef.current.dataset.visible = String(visible);
-  };
+  }, [cursorRef]);
 
   const setCursor = (x, y, mode) => {
     const node = cursorRef?.current;
@@ -139,7 +139,7 @@ export function HandControl({ cursorRef, onTrackingChange, onStatusChange }) {
     cancelClick();
     clearHover();
     setCursorVisible(false);
-  }, []);
+  }, [setCursorVisible]);
 
   const detectFrame = () => {
     const video = videoRef.current;
@@ -180,9 +180,6 @@ export function HandControl({ cursorRef, onTrackingChange, onStatusChange }) {
     const tip = hand[8];
     const targetX = 1 - tip.x;
     const targetY = tip.y;
-    const dx = targetX - smoothRef.current.x;
-    const dy = targetY - smoothRef.current.y;
-
     // Edge-assist: the final 10% of the camera range expands toward the
     // corresponding viewport edge, making corners easier to reach without
     // changing the center-area tracking feel.
