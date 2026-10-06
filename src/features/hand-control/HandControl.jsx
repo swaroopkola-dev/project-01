@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { classifyGesture } from "./gesture";
 import { getInteractiveTarget } from "./targets";
 
-export function HandControl({ cursorRef, onTrackingChange, onStatusChange }) {
+export function HandControl({ cursorRef, onStatusChange }) {
   const videoRef = useRef(null);
   const detectorRef = useRef(null);
   const streamRef = useRef(null);
