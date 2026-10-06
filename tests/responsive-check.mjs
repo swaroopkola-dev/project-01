@@ -62,7 +62,7 @@ const runner = [
   "  const page = await browser.newPage();",
   "  const consoleErrors = [];",
   '  page.on("console", (message) => { if (message.type() === "error") consoleErrors.push(message.text()); });',
-  "  page.on("pageerror", (error) => consoleErrors.push(String(error)));",
+  '  page.on("pageerror", (error) => consoleErrors.push(String(error)));',
   "  for (const width of widths) {",
   "    consoleErrors.length = 0;",
   "    await page.setViewportSize({ width, height: 900 });",
