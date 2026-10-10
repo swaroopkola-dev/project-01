@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap');
+
+:root {
+  font-family: 'DM Sans', Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: #24242f;
+  background: #f6f6fb;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  --ink: #24242f;
+  --muted: #858594;
+  --subtle: #a5a5b1;
+  --line: #e9e9f0;
+  --surface: #ffffff;
+  --purple: #6558dc;
+  --purple-dark: #5549c5;
+  --purple-pale: #f0efff;
+  --lime: #d8ed67;
+  --coral: #ff9d82;
+}
+
+* { box-sizing: border-box; }
+html { min-width: 320px; background: #f6f6fb; }
+body { margin: 0; min-width: 320px; min-height: 100vh; }
+button, textarea, input { font: inherit; }
+button { border: 0; cursor: pointer; }
+button:disabled { cursor: wait; opacity: .78; }
+a { color: inherit; }
+#root { min-height: 100vh; }
+
